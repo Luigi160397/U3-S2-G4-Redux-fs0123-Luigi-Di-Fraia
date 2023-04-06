@@ -1,7 +1,9 @@
-import { Container, Navbar } from "react-bootstrap";
+import { Badge, Container, Navbar } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const BtnFav = () => {
+  const favourites = useSelector(state => state.favourites.content.length);
   return (
     <Navbar bg="light">
       <Container>
@@ -9,7 +11,11 @@ const BtnFav = () => {
           Home
         </Link>
         <Link className="nav-link" to="/favourites">
-          Favourites
+          Favourites{" "}
+          <span>
+            {" "}
+            <Badge bg="dark">{favourites}</Badge>{" "}
+          </span>
         </Link>
       </Container>
     </Navbar>
